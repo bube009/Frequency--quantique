@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@capacitor/core": "^6.0.0",
-    "@ionic/vue": "^8.0.0",
     "@capacitor/ios": "^6.0.0",
-    "ionicons": "^7.0.0",
-    "vue": "^3.4.0"
+    "@ionic/vue": "^8.0.0",
+    "vue": "^3.4.0",
+    "ionicons": "^7.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "^6.0.0",
