@@ -1,9 +1,8 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: '.com.alexfournier.frequencyquantique'
-    .',
-  appName: 'Frequency.Quantique',
+  appId: 'com.frequency.quantique',
+  appName: 'FrequencyQuantique',
   webDir: 'dist',
   bundledWebRuntime: false
 };
