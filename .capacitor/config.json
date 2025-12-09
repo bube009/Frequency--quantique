@@ -1,5 +1,5 @@
 {
-  "appId": "com.frequency.quantique",
+  "appId": "com.alexfournier.frequency.quantique",
   "appName": "FrequencyQuantique",
   "webDir": "dist",
   "bundledWebRuntime": false
