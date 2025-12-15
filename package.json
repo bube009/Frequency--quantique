@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^6.0.0",
-    "@capacitor/ios": "^                         
+    "@capacitor/ios": "^ 6.0.0",                       
     "@capacitor/app": "^6.0.0",
    "@ionic/vue": "^8.0.0",
   "vue": "^3.4.0",
