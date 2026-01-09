@@ -1,0 +1,37 @@
+[
+  { "id": "stress", "label": "Stress", "group": "Émotionnel", "frequencies": [174, 285, 396] },
+  { "id": "anxiete", "label": "Anxiété", "group": "Émotionnel", "frequencies": [396, 417, 528] },
+  { "id": "peur", "label": "Peur", "group": "Émotionnel", "frequencies": [396, 417] },
+  { "id": "colere", "label": "Colère", "group": "Émotionnel", "frequencies": [285, 396] },
+  { "id": "tristesse", "label": "Tristesse", "group": "Émotionnel", "frequencies": [417, 528] },
+
+  { "id": "fatigue", "label": "Fatigue", "group": "Énergie", "frequencies": [285, 528] },
+  { "id": "epuisement", "label": "Épuisement", "group": "Énergie", "frequencies": [174, 285] },
+  { "id": "ancrage", "label": "Ancrage", "group": "Énergie", "frequencies": [174, 396] },
+  { "id": "detox", "label": "Détox", "group": "Énergie", "frequencies": [285, 741] },
+
+  { "id": "sommeil", "label": "Sommeil", "group": "Nerveux", "frequencies": [174, 432] },
+  { "id": "tension", "label": "Tension nerveuse", "group": "Nerveux", "frequencies": [396, 417] },
+  { "id": "migraine", "label": "Inconfort crânien", "group": "Nerveux", "frequencies": [174, 285] },
+
+  { "id": "coeur", "label": "Cohérence cardiaque", "group": "Cardiaque", "frequencies": [528, 639] },
+  { "id": "circulation", "label": "Circulation énergétique", "group": "Cardiaque", "frequencies": [285, 528] },
+
+  { "id": "digestion", "label": "Digestion", "group": "Digestif", "frequencies": [285, 417] },
+  { "id": "estomac", "label": "Confort estomac", "group": "Digestif", "frequencies": [174, 285] },
+  { "id": "foie", "label": "Équilibre hépatique", "group": "Digestif", "frequencies": [285, 528] },
+
+  { "id": "immunite", "label": "Soutien immunitaire", "group": "Global", "frequencies": [285, 528, 741] },
+  { "id": "inflammation", "label": "Inflammation", "group": "Global", "frequencies": [174, 285] },
+
+  { "id": "dos", "label": "Dos", "group": "Musculaire", "frequencies": [174, 285] },
+  { "id": "articulation", "label": "Articulations", "group": "Musculaire", "frequencies": [285, 396] },
+  { "id": "muscle", "label": "Muscles", "group": "Musculaire", "frequencies": [174, 285, 396] },
+
+  { "id": "clarte", "label": "Clarté mentale", "group": "Mental", "frequencies": [741, 852] },
+  { "id": "concentration", "label": "Concentration", "group": "Mental", "frequencies": [852] },
+  { "id": "memoire", "label": "Mémoire", "group": "Mental", "frequencies": [528, 741] },
+
+  { "id": "equilibre", "label": "Équilibre global", "group": "Global", "frequencies": [432, 528] },
+  { "id": "harmonisation", "label": "Harmonisation", "group": "Global", "frequencies": [528, 639, 963] }
+]
