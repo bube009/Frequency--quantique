@@ -2,12 +2,12 @@
   "name": "frequency-quantique-v2",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-  "dev": "vite",
-  "serve": "ionic serve --no-open",
-  "build": "ionic build",
-  "preview": "vite preview"
-}
+    "dev": "vite",
+    "serve": "ionic serve --no-open",
+    "build": "ionic build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@ionic/vue": "^7.0.0",
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@capacitor/core": "^5.0.0",
     "@capacitor/ios": "^5.0.0",
+    "@ionic/vue-toolkit": "^9.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "typescript": "^5.0.0",
     "vite": "^4.0.0"
