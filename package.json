@@ -3,9 +3,11 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "ionic serve",
-    "build": "ionic build",
-    "ios": "ionic capacitor run ios"
+  "dev": "vite",
+  "serve": "ionic serve --no-open",
+  "build": "ionic build",
+  "preview": "vite preview"
+}
   },
   "dependencies": {
     "@ionic/vue": "^7.0.0",
