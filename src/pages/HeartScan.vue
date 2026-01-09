@@ -1,18 +1,40 @@
-import { calculateHRV } from '../engine/hrvAnalyzer'
-import { coherenceScore } from '../engine/coherenceEngine'
-import { mapFrequency } from '../engine/frequencyMapper'
-import { play, stop } from '../audio/oscillator'<template>
+<template>
   <ion-page>
     <ion-content class="ion-padding">
       <h2>Scan cardiaque</h2>
 
-      <video ref="video" autoplay playsinline muted></video>
-      <canvas ref="canvas" width="200" height="150" style="display:none"></canvas>
+      <!-- Vidéo caméra -->
+      <video
+        ref="video"
+        autoplay
+        playsinline
+        muted
+        style="width: 100%; max-width: 320px; border-radius: 12px;"
+      ></video>
 
-      <p><strong>BPM :</strong> {{ bpm }}</p>
+      <!-- Canvas caché pour analyse PPG -->
+      <canvas
+        ref="canvas"
+        width="200"
+        height="150"
+        style="display: none;"
+      ></canvas>
 
-      <ion-button @click="startScan">Démarrer le scan</ion-button>
-      <ion-button color="danger" @click="stopScan">Arrêter</ion-button>
+      <!-- Données -->
+      <div style="margin-top: 16px;">
+        <p><strong>BPM :</strong> {{ bpm }}</p>
+        <p><strong>Cohérence :</strong> {{ coherence }}</p>
+        <p><strong>Fréquence :</strong> {{ currentFrequency }} Hz</p>
+      </div>
+
+      <!-- Actions -->
+      <ion-button expand="block" @click="startScan">
+        Démarrer le scan
+      </ion-button>
+
+      <ion-button expand="block" color="danger" @click="stopScan">
+        Arrêter
+      </ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -20,12 +42,20 @@ import { play, stop } from '../audio/oscillator'<template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { IonPage, IonContent, IonButton } from '@ionic/vue'
+
 import { extractPPGFromFrame } from '../engine/ppgProcessor'
 import { detectPeak, calculateBPMFromPeaks } from '../engine/bpmCalculator'
+import { calculateHRV } from '../engine/hrvAnalyzer'
+import { coherenceScore } from '../engine/coherenceEngine'
+import { mapFrequency } from '../engine/frequencyMapper'
+import { play, stop } from '../audio/oscillator'
 
 const video = ref<HTMLVideoElement>()
 const canvas = ref<HTMLCanvasElement>()
+
 const bpm = ref(0)
+const coherence = ref(0)
+const currentFrequency = ref(0)
 
 let ctx: CanvasRenderingContext2D | null = null
 let animationId = 0
@@ -43,8 +73,8 @@ async function startScan() {
   }
 
   ctx = canvas.value?.getContext('2d') || null
-  baseline = 0
   peaks = []
+  baseline = 0
 
   loop()
 }
@@ -64,7 +94,21 @@ function loop() {
   if (peak) {
     peaks.push(peak)
     if (peaks.length > 8) peaks.shift()
+
     bpm.value = calculateBPMFromPeaks(peaks)
+
+    if (peaks.length >= 3) {
+      const intervals: number[] = []
+      for (let i = 1; i < peaks.length; i++) {
+        intervals.push(peaks[i] - peaks[i - 1])
+      }
+
+      const hrv = calculateHRV(intervals)
+      coherence.value = coherenceScore(hrv)
+      currentFrequency.value = mapFrequency(coherence.value)
+
+      play(currentFrequency.value)
+    }
   }
 
   animationId = requestAnimationFrame(loop)
@@ -72,6 +116,8 @@ function loop() {
 
 function stopScan() {
   cancelAnimationFrame(animationId)
+  stop()
+
   if (video.value?.srcObject) {
     const tracks = (video.value.srcObject as MediaStream).getTracks()
     tracks.forEach(t => t.stop())
